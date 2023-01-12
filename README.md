@@ -1,1 +1,1 @@
-# placeholder-images.github.io
+# placeholder-images
