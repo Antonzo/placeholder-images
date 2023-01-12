@@ -1,0 +1,7 @@
+# Project ignore
+node_modules
+
+# MacOS ignore
+.DS_Store
+.AppleDouble
+.LSOverride

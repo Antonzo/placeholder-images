@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<title>Placeholders</title>
+        <!-- Styles -->
+        <style>
+        body {
+            width: 100vw;
+            margin: 0;
+            padding-top: 20px;
+            background-color: #FF7F50;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            flex-wrap: wrap;
+        }
+        .img-container {
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .format-tag {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            font-size: 16px;
+            color: white;
+            z-index: 2;
+        }
+        img {
+            width: 100%;
+        }
+        @media (min-width: 640px) {
+            .img-container {
+                width: 50% !important;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+        }
+        @media (min-width: 1020px) {
+            .img-container {
+                width: calc(100% / 3) !important;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <script>
+        const ANIMATED_FILE_FORMATS = ["apng", "gif"];
+        const STATIC_FILE_FORMATS = ["png", "jpg", "tiff"];
+        const FILE_FORMATS = STATIC_FILE_FORMATS.concat(ANIMATED_FILE_FORMATS);//["apng", "avif", "gif", "jpg", "png", "svg", "webp"];
+        console.log("FF", FILE_FORMATS)
+
+        function addImage(src, format) {
+            var imgContainer = document.createElement('div');
+            imgContainer.classList.add("img-container");
+
+            var img = document.createElement('img');
+            img.src = src;
+
+            var formatTag = document.createElement('span');
+            formatTag.innerHTML = format;
+            formatTag.classList.add("format-tag");
+
+            imgContainer.appendChild(img);
+            imgContainer.appendChild(formatTag);
+            document.body.appendChild(imgContainer);
+        }
+
+        FILE_FORMATS.forEach((f) => {
+            const name = ANIMATED_FILE_FORMATS.includes(f) ? "eddy-animated" : "eddy";
+            const format = f === "apng" ? "png" : f;
+            console.log(name, f)
+            addImage(`./images/${name}.${format}`, f);
+        });
+        </script>
+    </body>
+</html>
